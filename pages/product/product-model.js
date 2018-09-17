@@ -1,17 +1,16 @@
 /**
  * Created by jimmy on 17/2/26.
  */
+
 import {Base} from '../../utils/base.js';
 
-class Theme extends Base{
+class Product extends Base{
     constructor(){
         super();
     }
-
-    /*商品*/
-    getProductorData(id,callback){
+    getDetailInfo(id,callback){
         var param={
-            url: 'theme/'+id,
+            url: 'product/'+id,
             sCallback:function(data){
                 callback && callback(data);
             }
@@ -20,4 +19,4 @@ class Theme extends Base{
     }
 };
 
-export {Theme};
+export {Product}

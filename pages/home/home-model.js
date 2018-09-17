@@ -1,52 +1,49 @@
-import {Base} from "../../utils/base";
+/**
+ * Created by jimmy on 17/2/26.
+ */
 
-class Home extends Base {
-    /**
-     * 构造函数
-     */
-    constructor() {
+// var Base = require('../../utils/base.js').base;
+import {Base} from '../../utils/base.js';
+
+class Home extends Base{
+    constructor(){
         super();
     }
 
-    /**
-     * 获取Banner列表
-     * @param id bannerId
-     * @param callback 回调函数
-     */
-    getBannerData(id, callback) {
-        this.request({
-            'url': 'banner/' + id,
-            sCallback: function (data) {
-                callback && callback(data.items);
-            }
-        });
-    }
+    /*banner图片信息*/
+    getBannerData(callback){
+        var that=this;
+        var param={
+            url: 'banner/1',
 
-    /**
-     * 首页主题
-     * @param callback 回调函数
-     */
-    getThemeData(callback) {
-        this.request({
-            'url': 'theme?ids=1,2,3',
-            sCallback: function (data) {
+            sCallback:function(data){
+                data=data.items;
                 callback && callback(data);
             }
-        });
+        };
+        this.request(param);
     }
-
-    /**
-     * 最近新品
-     * @param callback 回调函数
-     */
-    getProductData(callback) {
-        this.request({
-            'url': 'product/recent',
-            sCallback: function (data) {
+    /*首页主题*/
+    getThemeData(callback){
+        var param={
+            url: 'theme?ids=1,2,3',
+            sCallback:function(data){
                 callback && callback(data);
             }
-        });
+        };
+        this.request(param);
     }
-}
+
+    /*首页部分商品*/
+    getProductorData(callback){
+        var param={
+            url: 'product/recent',
+            sCallback:function(data){
+                callback && callback(data);
+            }
+        };
+        this.request(param);
+    }
+};
 
 export {Home};
